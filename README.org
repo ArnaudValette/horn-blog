@@ -1,0 +1,21 @@
+* Building and running
+#+begin_src bash
+  # In the root directory of this project:
+  mkdir data
+  mkdir src/ressources
+  touch src/ressources/data.org
+  # Write valid ORG inside data.org
+  <your editor> src/ressources/data.org
+  # Choose a password 
+  touch .env
+  echo "PASSWORD='<some kind of password>'" > .env
+  # Install, build, start
+  npm install
+  npm run build
+  npm start
+  # POST at localhost:3000/api/recompile and send {"p":"<your password"}
+  # This tells the application to parse ressources/data.org
+  curl -X POST localhost:3000/api/recompile -H 'Content-Type: application/json' -d '{"p":"<some kind of password>"}'
+  # The blog is served at localhost:3000
+#+end_src
+
