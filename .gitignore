@@ -38,4 +38,3 @@ next-env.d.ts
 .env
 data/
 src/ressources/data_old.org
-public/images
