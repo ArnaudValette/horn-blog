@@ -10,9 +10,10 @@ import { cwd } from "process"
 export async function POST(req: NextRequest) {
   const { p } = (await req.json()) || null
   if (p) {
-    reset()
+    
     const pw: string = process.env.PASSWORD as string
     if (p === pw) {
+      reset()
       parse()
       revalidatePath("/", "page")
       return ok()
