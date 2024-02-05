@@ -68,7 +68,7 @@ export function List({ node }: any) {
 }
 
 export function OrgCode(props: any) {
-  return <div className="name"></div>
+  return <div className="org-code-block">{props.node.textContent}</div>
 }
 
 export function FootNote(props: any) {
