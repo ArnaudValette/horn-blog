@@ -1,0 +1,100 @@
+* Example article: readme
+[[/images/horn3.webp]]
+** To run this program [2024-02-05 Mon]
+
+*** Foreword
+
+The horn bloggin engine works by parsing the /data.org/ file located
+in the /ressources/ folder of /src/. 
+
+Images referenced in that file must be located in the /public/ folder :
+
+#+begin_src org
+  An image inside ~/public/images/~:
+  [[/images/image.png]]
+#+end_src
+
+Once the application is started, a request has to be made at a specific
+api endpoint everytime you change the content of /data.org/ in order to
+update the generated pages. The api endpoint is password protected,
+you are in charge of choosing a strong password in order to prevent
+external unwanted reprocessing of the /data.org/ file.
+
+*** Setup 
+
+To have the application up and running and serve your org file as a blog,
+you have to follow these steps :
+
+- Create a .env file
+  - set the PASSWORD variable in it
+  - keep it in mind
+- Install the dependencies
+- Build the application
+- Start the application
+- (Optionnal) edit data.org
+- Tell the application to parse the files
+
+Which is, *roughly* speaking: 
+
+#+begin_src bash
+  # In the root directory of the application:
+  # Choose a password:
+  touch .env
+  echo "PASSWORD='<some kind of password>'" > .env
+  <your editor> src/ressources/data.org
+  # Install, build, start
+  npm install
+  npm run build
+  npm start
+  # POST at localhost:3000/api/recompile and send {"p":"<your password"}
+  curl -X POST localhost:3000/api/recompile -H 'Content-Type: application/json' -d '{"p":"<some kind of password>"}'
+  # The blog is served at localhost:3000
+#+end_src
+
+When done, you can visit your blog at =localhost:3000=, you can adjust
+the =PORT= environment variable to your liking:
+
+: PORT=3001 npm start
+
+** Informations
+
+The current approach is to treat every heading of level 1 as an article,
+i.e. level 2 headings are the main sections of the article. The application
+represents available articles in the floating right pannel and sections
+of the current article in the floating left pannel (given you are seeing this
+on a desktop monitor).
+
+Each section of the article displays a menu that contains several options, feel
+free to request features via github issues. There will always be some things to
+fix, features to enhance, feel free to help and/or modify this code to your liking.
+
+For now, the following section will display a set of features that would make
+this application better and problems that will eventually be fixed.
+
+*** Known problems:
+
+- Problems [0/8] 
+  - [ ] Dates in headings should not display in the left pannel
+  - [ ] Dates outside of headings should display inline
+  - [ ] The syntaxical coloration of code blocks should be faster
+  - [ ] Spacing should be adjusted 
+  - [ ] The headings numeration should be less distractive
+  - [ ] The bottom of articles should display more space
+  - [ ] Reading mode should be better
+  - [ ] Check sanity of the code that merges lists and paragraphs 
+- Features [0/10]
+  - [ ] User should be able to choose between full SSR, CSR and hybrid
+  - [ ] A password protected route is not a good solution
+  - [ ] Handle quote and center blocks
+  - [ ] Allow inline images
+  - [ ] Allow external images
+  - [ ] Handle tags and research by tags
+  - [ ] RestAPI > articles, sections...
+  - [ ] Comments
+  - [ ] Allow the processing of several org files
+  - [ ] Allow working with an external DB 
+
+
+
+* Another article
+This is a test article
