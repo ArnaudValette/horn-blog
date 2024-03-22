@@ -1,10 +1,104 @@
+* What is horn-blog ? 
+[[/images/horn.webp]]
+** Introduction  [2024-03-22 Fri]
+Horn-blog is a blogging engine based on [[https://github.com/ArnaudValette/Horn][horn]], a parser for [[https://orgmode.org/][org]] written in
+typescript. It leverages NextJS and constitutes a convenient way of publishing
+your org files into a minimalistic looking website. The source code is
+available on [[https://github.com/ArnaudValette/horn-blog][github]] and I contribute to it whenever I have some free time.
+
+The aim of this project was initially to build a proof-of-concept that would
+leverage _horn_ in order to display its capabilities in a real-world scenario.
+Now that it's done, I am imagining a solution that could allow users to update
+their horn-blog instance directly from emacs (I am assuming that's the editor
+org /buffer-fillers/ are using). 
+
+In the meantime I also had the idea to leverage [[https://redbean.dev/][redbean]] to create an even more
+lightweight version of _horn-blog_ (the source is available [[https://github.com/ArnaudValette/redbean-publish][here]]); but that's
+for later, since a lot of _horn_ had to be rewritten in /lua/.
+
+There are a lot of ideas that needs to be implemented in _horn-blog_, such as
+the possibility to write some JS/TS in the org buffer to add some custom
+scripts, adding LaTeX support, inline images, allowing users to style things
+inside their buffer, and so many other features. Unfortunately, some of these
+features would probably require to get rid of the canonical org syntax, and
+that's why this present version tries to implement the less-deviant-few
+features correctly without causing too much trouble.
+
+** Motivations
+I am currently building an educational device which would allow
+to redact intuitive mathematics courses.
+The reason I am working on org based blogging engines is complex.
+
+*** Deep learning, notebooks and literate programming 
+As of today, if you ever worked in the deep learning industry, you should
+have stumbled upon jupyter/collab or more generally speaking ~executable notebooks~.
+Executable notebooks are a really interesting thing, for a computer scientist, it
+means you are given the power to write articles whose code
+can be executed by the reader, you no longer produce mere testimonials on
+the results of your research: you are bringing the user to the lab !
+
+In fact, a lot of what constitutes engineering in the deep learning world can
+be learned inside executable notebooks; not only it constitutes a convenient way
+to collaborate in an interactive environment, it is also a wonderful educational 
+device.
+
+In 1984, Donald Knuth introduced the concept of [[https://en.wikipedia.org/wiki/Literate_programming][literate programming]].
+The main reason I switched from [[https://www.vim.org/][vim]] to [[https://www.gnu.org/software/emacs/][emacs]] is [[https://orgmode.org/][org-mode]]. Org mode is
+an highly capable literate programming environment [fn:1]. The idea with
+literate programming is that instead of writing programs that contains comments,
+you are writing an explanation of how the program works in a natural language,
+with snippets from which the source code can be generated. One effect of this
+is that the reader of a literate program is introduced to the source code
+by following the logical order in which it has been written.
+
+Take any open source project you never heard of and try to fix an issue it has;
+how many time do you waste by searching for an entrypoint or by trying to understand
+some obscure method that seems to manipulate some yet unknown data structure ?
+The effort of literate programming addresses this, producing something that ressembles
+a math textbook. You don't learn undergraduate maths by staring at advanced notions
+trying to make sense out of it, quite the contrary in fact, math education begins with
+a starting point. Source code is hard because the moment it is available to readers,
+it already is obfuscated by months of engineering and emergent conventions, despite
+all the efforts we make to apply KISS and clean code principles, we always produce
+non trivially understandable source code and you will always have to guess the
+underlying architecture of it, there is no such thing as /beginner friendly/ traditional
+source code.
+
+*** Org-mode and MOOCs
+As I said, I came to org-mode in order to test literate programming. But to be honest,
+that didn't happen and I never wrote full-fledged literate-programming based softwares,
+how I ended up using it ressembled more what executable notebooks are; org-mode
+is the environment in which I explain fragments of a source code that is already
+redacted somewhere, and in which I discuss about algorithms with others.
+
+Org is a blogging engine in itself, just send org files
+by mail to your readers and that's it, you are publishing reproductible experiments and
+interactive explanations of the things you invent. My endeavour is to bring org to the
+web; and by bringing it to the web I don't mean bringing it as yet another markdown.
+What we need to bring to the web is the framework for publishing and editing
+interactive courses. By bringing all of the feature of org and org-babel to the web,
+you already cover a lot of what you need to write computer science MOOCs.
+
+My aim is to expand on this, since org support LaTeX you can perfectly write a
+maths textbook in it. Yet I fail to see a reason to limit the web to some sort
+of digital book. I claim that a lot of what makes you understand mathematics is
+based on vision and intuition. That is why I think we should have a markdown like
+language to represent mathematical objects in mathematicals situations, and such a
+thing would benefit our world. By allowing us to write and explain mathematical
+concepts visually under the form of a language as trivial as a markdown, we would
+allow us to create better ressources for education.
+
+So is, according to me, the logical development of Horn and its applications.
+
+
+
 * Example article: readme
 [[/images/horn3.webp]]
 ** To run this program [2024-02-05 Mon]
 
 *** Foreword
 
-The horn bloggin engine works by parsing the /data.org/ file located
+The horn blogging engine works by parsing the /data.org/ file located
 in the /ressources/ folder of /src/. 
 
 Images referenced in that file must be located in the /public/ folder :
@@ -96,5 +190,4 @@ this application better and problems that will eventually be fixed.
 
 
 
-* Another article
-This is a test article
+[fn:1] See [[https://orgmode.org/worg/org-contrib/babel/][org babel]] 
