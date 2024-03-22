@@ -42,6 +42,7 @@ function safen(str: string) {
   return str
     .replace(/\s/g, "-")
     .replace(/&/g, "&amp;")
+    .replace(/\?/g, "&qm;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")

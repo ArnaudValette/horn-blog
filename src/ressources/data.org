@@ -1,4 +1,4 @@
-* What is horn-blog ? 
+* What is horn-blog 
 [[/images/horn.webp]]
 ** Introduction  [2024-03-22 Fri]
 Horn-blog is a blogging engine based on [[https://github.com/ArnaudValette/Horn][horn]], a parser for [[https://orgmode.org/][org]] written in
@@ -7,16 +7,16 @@ your org files into a minimalistic looking website. The source code is
 available on [[https://github.com/ArnaudValette/horn-blog][github]] and I contribute to it whenever I have some free time.
 
 The aim of this project was initially to build a proof-of-concept that would
-leverage _horn_ in order to display its capabilities in a real-world scenario.
+leverage *horn* in order to display its capabilities in a real-world scenario.
 Now that it's done, I am imagining a solution that could allow users to update
 their horn-blog instance directly from emacs (I am assuming that's the editor
 org /buffer-fillers/ are using). 
 
 In the meantime I also had the idea to leverage [[https://redbean.dev/][redbean]] to create an even more
-lightweight version of _horn-blog_ (the source is available [[https://github.com/ArnaudValette/redbean-publish][here]]); but that's
-for later, since a lot of _horn_ had to be rewritten in /lua/.
+lightweight version of *horn-blog* (the source is available [[https://github.com/ArnaudValette/redbean-publish][here]]); but that's
+for later, since a lot of *horn* had to be rewritten in /lua/.
 
-There are a lot of ideas that needs to be implemented in _horn-blog_, such as
+There are a lot of ideas that needs to be implemented in *horn-blog*, such as
 the possibility to write some JS/TS in the org buffer to add some custom
 scripts, adding LaTeX support, inline images, allowing users to style things
 inside their buffer, and so many other features. Unfortunately, some of these
