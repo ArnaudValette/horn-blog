@@ -28,12 +28,12 @@ export const getLinkData = () => m
 export const getArticles = () => d
 export const getFootnotes = () => f
 
-export const clientF = () =>
-  JSON.parse(fs.readFileSync(path.join(cwd(), "data/f")).toString())
-export const clientD = () =>
-  JSON.parse(fs.readFileSync(path.join(cwd(), "data/d")).toString())
-export const clientM = () =>
-  JSON.parse(fs.readFileSync(path.join(cwd(), "data/m")).toString())
+const clientX = (s: string) => 
+  JSON.parse(fs.readFileSync(path.join(cwd(),
+`data/${s}`)).toString())
+export const clientF = () => clientX("f")
+export const clientD = () => clientX("d")
+export const clientM = () => clientX("m")
 export const createFN = (h: FootNode) => f.push(h)
 
 const genLink = (h: HornNode) => safen(h.textContent).toLowerCase()
